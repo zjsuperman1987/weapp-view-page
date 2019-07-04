@@ -39,45 +39,37 @@ Component({
 
     // 内容 swiper
     _onSwiperChange(e) {
+      let current = e.detail.source === 'touch' ? e.detail.current : this.data.current
       this.setData({
-        current: e.detail.current
+        current: current
       })
     }
   },
   ready() {
-    var that = this;
-    _getDomProperties('.header-item', {
-      'size': true
-    }, this, function(res) {
+    let that = this,
+        query = wx.createSelectorQuery().in(this);
+
+    query.selectAll('.header-item').fields({
+      size: true
+    }, res => {
       that.setData({
         titleWidth: res
       })
+    }).exec(function () {
+      query.selectAll('.header-font').fields({
+        size: true
+      }, res => {
+        that.setData({
+          textWidth: res,
+          bottomLineWidth: res[0].width
+        })
+      }).exec(function () {
+        let bltranslateX = (that.data.titleWidth[0].width - that.data.textWidth[0].width) / 2;
+
+        that.setData({
+          bottomLineTranslateX: bltranslateX
+        })
+      });
     });
-    _getDomProperties('.header-font', {
-      'size': true
-    }, this, function(res) {
-      that.setData({
-        textWidth: res,
-        bottomLineWidth: res[0].width
-      })
-
-    });
-    // 计算 bottomline transform 位置 数组
-    setTimeout(() => {
-      this.setData({
-        bottomLineTranslateX: (this.data.titleWidth[0].width - this.data.textWidth[0].width) / 2
-      })
-    }, 100)
-
-
-  },
-});
-
-function _getDomProperties(className, sproperties, pageObj, fn) {
-  let query = wx.createSelectorQuery().in(pageObj).selectAll(className).fields({
-    ...sproperties
-  }, res => {
-    fn(res);
-  }).exec();
-
-}
+  }
+})
