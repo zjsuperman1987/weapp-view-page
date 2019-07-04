@@ -3,7 +3,7 @@
 
 <!-- 头部 -->
 <scroll-view class="header-scroll-view" scroll-x>
-   <view class="header">
+   <view class="header" style="width: {{headerWidth}}px">
     <block wx:for="{{titles}}" wx:key="{{index}}">
       <view class="header-item {{index === current ? 'active-item' : ''}}" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}"><text class="header-font">{{item}}</text></view>
     </block>

@@ -14,6 +14,7 @@
   position: relative;
   display: flex;
   height: 70rpx;
+  border-bottom: 1rpx solid #202020;
 }
 
 .header-item {
@@ -23,7 +24,6 @@
   align-items: center;
   padding: 0 30px;
   box-sizing: border-box;
-  border-bottom: 1rpx solid #202020;
 }
 .active-item {
   color: red;

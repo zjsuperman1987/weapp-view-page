@@ -48,7 +48,7 @@ Component({
   ready() {
     let that = this,
         query = wx.createSelectorQuery().in(this);
-
+// 头部计算 ·················
     query.selectAll('.header-item').fields({
       size: true
     }, res => {
@@ -56,6 +56,15 @@ Component({
         titleWidth: res
       })
     }).exec(function () {
+      // 计算头部宽度
+      let headerWidth = 0;
+      for (let i = 0; i < that.data.titleWidth.length; i++) {
+        headerWidth += that.data.titleWidth[i].width;
+      }
+      that.setData({
+        headerWidth: headerWidth
+      })
+
       query.selectAll('.header-font').fields({
         size: true
       }, res => {
@@ -64,11 +73,14 @@ Component({
           bottomLineWidth: res[0].width
         })
       }).exec(function () {
-        let bltranslateX = (that.data.titleWidth[0].width - that.data.textWidth[0].width) / 2;
-
+        let titleWidth = that.data.titleWidth[0].width;
+        let textWidth = that.data.textWidth[0].width;
         that.setData({
-          bottomLineTranslateX: bltranslateX
+          bottomLineTranslateX: (titleWidth - textWidth) / 2
         })
+
+        // 计算位移位置
+
       });
     });
   }
