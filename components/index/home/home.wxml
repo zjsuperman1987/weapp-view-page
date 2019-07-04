@@ -1,0 +1,17 @@
+<!--components/index/home/home.wxml-->
+
+<!-- wxml布局文件 -->
+<scroll-view style='height:100%' scroll-y='{{!isindrag}}' bindscroll='scorll'>
+  <!-- 监听布局touch事件 -->
+  <view class='column' bindtouchstart='start' bindtouchend='end' bindtouchmove='move'>
+    <!-- 刷新状态view -->
+    <view style='height:{{hei}}px;background:gray' class='refresh'>{{desc}}</view>
+    <view class='item' wx:for='{{data}}' wx:key="{{index}}">
+      <view class='title'>{{item}}</view>
+      <view class='bottom'>
+        <view>新华网</view>
+        <view class='comment'>2344评</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

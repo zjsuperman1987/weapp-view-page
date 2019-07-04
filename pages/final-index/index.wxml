@@ -1,0 +1,5 @@
+<!--pages/final-index/index.wxml-->
+
+
+<!-- 设置头部固定宽度 headerItemWidth="width: 250rpx" -->
+<x-view-page class='x-view-page'></x-view-page>

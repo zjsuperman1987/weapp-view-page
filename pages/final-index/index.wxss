@@ -1,0 +1,7 @@
+/* pages/final-index/index.wxss */
+
+x-view-page {
+  height: 300px;
+  margin-top: 100px;
+}
+

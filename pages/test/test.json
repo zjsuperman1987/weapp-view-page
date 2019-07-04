@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "home": "../../components/index/home/home",
+    "hot": "../../components/index/hot/hot",
+    "recommend": "../../components/index/recommend/recommend"
+  }
+}

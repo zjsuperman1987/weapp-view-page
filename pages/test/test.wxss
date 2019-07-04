@@ -1,0 +1,41 @@
+/* pages/test/test.wxss */
+
+
+page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.item-parent {
+  position: relative;
+  display: flex;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.title-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65rpx;
+  box-sizing: border-box;
+}
+
+.title-line {
+  position: absolute;
+  bottom: 0;
+  width: 64rpx;
+  height: 4rpx;
+  background: red;
+  transform: translateX(46.5px);
+}
+
+swiper {
+  height: calc(100% - 65rpx)
+}
+swiper-item {
+  /* background: rgba(0, 0, 0, 0.5) */
+}
+scroll-view {
+  height: 100%;
+}

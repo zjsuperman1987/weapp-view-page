@@ -1,0 +1,28 @@
+/* components/index/home/home.wxss */
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx #ccc solid;
+  justify-content: center;
+  padding: 20rpx;
+}
+.title {
+  font-size: 35rpx;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+  font-size: 20rpx;
+  color: gray;
+  margin-top: 10rpx;
+}
+.comment {
+  margin-left: 30rpx;
+}
+
+.refresh {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}

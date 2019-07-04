@@ -1,0 +1,21 @@
+<!--components/final-custom-view-pager/x-view-page.wxml-->
+
+
+<!-- 头部 -->
+<scroll-view class="header-scroll-view" scroll-x>
+   <view class="header">
+    <block wx:for="{{titles}}" wx:key="{{index}}">
+      <view class="header-item {{index === current ? 'active-item' : ''}}" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}"><text class="header-font">{{item}}</text></view>
+    </block>
+    <view class="bottom-line" 
+          style="width: {{bottomLineWidth}}px; transform: translateX({{bottomLineTranslateX}}px)"></view>
+   </view>
+</scroll-view>
+
+
+<!-- 内容 -->
+<swiper class="swiper" current="{{current}}" bindchange="_onSwiperChange">
+  <block wx:for="{{titles}}" wx:key="{{index}}">
+    <swiper-item>{{item}}</swiper-item>
+  </block>
+</swiper>
