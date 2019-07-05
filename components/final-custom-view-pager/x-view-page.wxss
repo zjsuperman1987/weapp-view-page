@@ -8,13 +8,14 @@
 /* 头部 */
 .header-scroll-view {
   width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, .5)
+  /* box-shadow: 0 1rpx 0 1rpx rgba(175, 80, 80, 0.5) */
 }
 
 .header {
   position: relative;
   display: flex;
   height: 70rpx;
-  border-bottom: 1rpx solid #202020;
 }
 
 .header-item {

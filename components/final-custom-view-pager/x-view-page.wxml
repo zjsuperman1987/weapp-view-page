@@ -3,18 +3,22 @@
 
 <!-- 头部 -->
 <scroll-view class="header-scroll-view" scroll-x>
-   <view class="header" style="width: {{headerWidth}}px">
+   <view class="header">
     <block wx:for="{{titles}}" wx:key="{{index}}">
-      <view class="header-item {{index === current ? 'active-item' : ''}}" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}"><text class="header-font">{{item}}</text></view>
+      <view class="header-item" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}"><text class="header-font" style="color: {{titleColor[index].color}}">{{item}}</text></view>
     </block>
     <view class="bottom-line" 
-          style="width: {{bottomLineWidth}}px; transform: translateX({{bottomLineTranslateX}}px)"></view>
+          animation="{{animationData}}"></view>
    </view>
 </scroll-view>
 
-
+<!--           style="width: {{bottomLineWidth}}px; transform: translateX({{bottomLineTranslateX}}px)" -->
+<!-- bindchange="_onSwiperChange" -->
 <!-- 内容 -->
-<swiper class="swiper" current="{{current}}" bindchange="_onSwiperChange">
+<swiper class="swiper" 
+        current="{{current}}" 
+        bindtransition='_onTransition'
+        bindanimationfinish='_onAnimationFinish'>
   <block wx:for="{{titles}}" wx:key="{{index}}">
     <swiper-item>{{item}}</swiper-item>
   </block>
