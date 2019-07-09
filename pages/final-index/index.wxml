@@ -2,4 +2,24 @@
 
 
 <!-- 设置头部固定宽度 headerItemWidth="width: 250rpx" -->
-<x-view-page class='x-view-page'></x-view-page>
+{{current}}
+<x-view-page class='x-view-page' bindswiperchange='_onSwiperChange'>
+  <block wx:if="{{current === 0}}">
+    我是首页
+  </block>
+  <block wx:if="{{current === 1}}">
+    热点
+  </block>
+  <block wx:if="{{current === 2}}">
+    热门推荐
+  </block>
+  <block wx:if="{{current === 3}}">
+    我爱我家
+  </block>
+  <block wx:if="{{current === 4}}">
+    我的资产
+  </block>
+  <x-scroll-view>
+    了手机发了的时间了
+  </x-scroll-view>
+</x-view-page>

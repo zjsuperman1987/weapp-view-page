@@ -37,7 +37,7 @@ Component({
    */
   methods: {
     _onHeaderItemWidthChange(newVal, oldVal) {
-      console.log("newVal: " + newVal, " oldVal: " + oldVal);
+      // console.log("newVal: " + newVal, " oldVal: " + oldVal);
       this.setData({
         componentHeaderStyle: 'width: ' + newVal
       })
@@ -71,15 +71,22 @@ Component({
       this.data.initLocked = false;
       this.data.middleLocked = false;
       this.data.middlePosition = false;
-      this.data.animation.width(bottomLineWidth);
-      this.data.animation.translate3d(bottomLineTranslateX).step();
-
+      
+      this.data.animation.right(0).step();
       this.setData({
-        animationData: this.data.animation.export(),
-        current: e.detail.current,
-        titleTouch: false
+        animationData: this.data.animation.export()
       })
+      this.data.animation.width(32).step({
+        duration: 300
+      });
 
+      setTimeout(() => {
+        this.setData({
+          animationData: this.data.animation.export(),
+          current: e.detail.current,
+          titleTouch: false,
+        })
+      }, 2000)
       // 取消全命中
       for (let i = 0; i < this.data.titles.length; i++) {
         let color = 'titleColor[' + i + '].color';
@@ -88,8 +95,15 @@ Component({
         })
       }
       this.setData({
-        [titleColor]: this.data.colors.endStatusColor
+        [titleColor]: this.data.colors.endStatusColor,
       })
+      setTimeout(() => {
+        this.setData({
+          moveId: 'header' + this.data.current
+        })
+      }, 300);
+      // 调用上层方法
+      // this.triggerEvent('swiperchange', e);
     },
     // 设置颜色
     _setTitleColor(delta) {
@@ -142,21 +156,32 @@ Component({
       } else {
         targetIndex = currentIndex === 0 ? 0 : currentIndex - 1;
       }
+
       // 需要移动距离
       if (currentIndex !== targetIndex) {
-        let translateArr = this.data.translateArr
+        let translateArr = this.data.translateArr;
+        let titlesWidth = this.data.titleWidth;
+        let textsWidth = this.data.textWidth;
         let distanceX = Math.abs(translateArr[targetIndex] - translateArr[currentIndex]);
+        // debugger;
+        let wrapperWidth = titlesWidth[currentIndex].width + textsWidth[targetIndex].width;
+        let wrapperTranslateIndex = Math.min(currentIndex,targetIndex);
+        
+console.log('过程...............')
+        let move_width_ratio = .1;
+        distanceX = distanceX * move_width_ratio;
         let titleX = (distanceX / 375) * delta;
-        let title_l = 0; 
-        if (delta > 0) {
-          title_l = translateArr[currentIndex] + titleX;
-        }else {
-          title_l = translateArr[currentIndex] - titleX;
-        }
-        console.log(title_l, '..................')
-        this.data.animation.translate3d(title_l, 0, 0).step();
+        titleX = translateArr[currentIndex] + titleX;
+
+        this.data.animation.width(80).step({
+          duration: 300
+        });
+        this.data.animation.translate3d(titleX, 0, 0).step();
         this.setData({
-          animationData: this.data.animation.export()
+          animationData: this.data.animation.export(),
+          bottomLineWidth: wrapperWidth,
+          bottomWrapperTranslate: translateArr[wrapperTranslateIndex],
+          bottomLinePosition: currentIndex < targetIndex ? 'left' : 'right'
         })
       }
     }
@@ -198,12 +223,12 @@ Component({
           timingFunction: 'linear'
         })
 
-        animation.width(that.data.textWidth[0].width);
-        animation.translate3d(translateArr[0], 0, 0).step()
-
+        animation.width(that.data.textWidth[0].width).step();
         that.setData({
           animation: animation,
           translateArr: translateArr,
+          bottomLineWidth: titleWidth[0].width + textWidth[1].width,
+          bottomWrapperTranslate: (titleWidth[0].width - textWidth[0].width) / 2,
           animationData: animation.export(),
           'titleColor[0].color': that.data.colors.endStatusColor
         })

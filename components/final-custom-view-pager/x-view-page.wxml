@@ -1,25 +1,27 @@
 <!--components/final-custom-view-pager/x-view-page.wxml-->
 
-
+<!-- scroll-into-view="{{moveId}}" -->
 <!-- 头部 -->
 <scroll-view class="header-scroll-view" scroll-x>
-   <view class="header">
+  <view class="header">
     <block wx:for="{{titles}}" wx:key="{{index}}">
-      <view class="header-item" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}"><text class="header-font" style="color: {{titleColor[index].color}}">{{item}}</text></view>
+      <view id="header{{index}}" class="header-item" bindtap="titleTap" data-index="{{index}}" style="{{headerItemWidth}}">
+        <text class="header-font" style="color: {{titleColor[index].color}}">{{item}}</text>
+      </view>
     </block>
-    <view class="bottom-line" 
-          animation="{{animationData}}"></view>
-   </view>
+    <view class="bottom-line-wrapper" style="width: {{bottomLineWidth}}px; transform: translateX({{bottomWrapperTranslate}}px);">
+      <view class="bottom-line {{bottomLinePosition}}" animation="{{animationData}}"></view>
+    </view>
+  </view>
 </scroll-view>
 
 <!--           style="width: {{bottomLineWidth}}px; transform: translateX({{bottomLineTranslateX}}px)" -->
 <!-- bindchange="_onSwiperChange" -->
 <!-- 内容 -->
-<swiper class="swiper" 
-        current="{{current}}" 
-        bindtransition='_onTransition'
-        bindanimationfinish='_onAnimationFinish'>
+<swiper class="swiper" current="{{current}}" bindtransition='_onTransition' bindanimationfinish='_onAnimationFinish' duration="300">
   <block wx:for="{{titles}}" wx:key="{{index}}">
-    <swiper-item>{{item}}</swiper-item>
+    <swiper-item>
+      {{item}}
+    </swiper-item>
   </block>
 </swiper>

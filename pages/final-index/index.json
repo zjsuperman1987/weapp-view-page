@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "x-view-page": "../../components/final-custom-view-pager/x-view-page"
+    "x-view-page": "../../components/final-custom-view-pager/x-view-page",
+    "x-scroll-view": "../../components/custom-scroll-view/x-scroll-view"
   }
 }

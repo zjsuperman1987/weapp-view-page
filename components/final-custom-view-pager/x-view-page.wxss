@@ -29,19 +29,39 @@
 .active-item {
   color: red;
 }
+
+
+
 /* 底线 */
+.bottom-line-wrapper {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  border-radius: 100px;
+  background: gold;
+}
 .bottom-line {
   position: absolute;
-  bottom: 1rpx;
+  bottom: 0rpx;
   height: 2px;
-  width: 20px;
+  border-radius: 100px;
   background: red;
+  transition: width 3s;
 }
-
+.move-right-line {
+  right: 0;
+}
+.move-left-line {
+  left: 0;
+}
 
 /* 内容 */
 .swiper {
   height: calc(100% - 70rpx);
-  /* background: rgba(0, 0, 0, .3); */
+  background: rgba(0, 0, 0, .3);
 }
 
+/* 滚动 */
+x-scroll-view {
+  height: 100%;
+}
