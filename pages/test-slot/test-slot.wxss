@@ -1,0 +1,12 @@
+/* pages/test-slot/test-slot.wxss */
+
+x-scroll-view {
+  height: 100%;
+  width: 100%;
+}
+
+.test{
+  height: 2000px;
+  width: 100%;
+  background: gold;
+}

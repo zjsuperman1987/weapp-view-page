@@ -1,2 +1,30 @@
 <!--components/test-slot/test-slot.wxml-->
-<text>components/test-slot/test-slot.wxml</text>
+
+
+<scroll-view class="header-scroll-view" scroll-x>
+  <view class="header">
+    <block wx:for="{{titles}}" wx:key="*this">
+      <view class="header-item">
+        <text class="header-text">{{item}}</text>
+      </view>
+    </block>
+    <!-- 下划线 -->
+    <view class="bottom-line-wrapper" style="width: {{blwWidth}}px; transform: translateX({{blwTranslate}}px)">
+      <view class="bottom-line {{blposition}}" style="width: {{blwidth}}px;"></view>
+    </view>
+  </view>
+</scroll-view>
+
+
+
+<!-- 内容 -->
+<swiper bindanimationfinish="_onSwiperFinish"
+        bindtransition="_onTransition">
+  <block wx:for="{{titles}}" wx:key="{{index}}">
+    <swiper-item bindtouchstart="_onSwiperTouchStart" data-index='{{index}}'>
+      <x-scroll-view>
+        <slot />
+      </x-scroll-view>
+    </swiper-item>
+  </block>
+</swiper>

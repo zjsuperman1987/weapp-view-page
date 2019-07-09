@@ -1,0 +1,6 @@
+<!--pages/test-slot/test-slot.wxml-->
+
+
+<x-swiper>
+  <view class='test'>你好</view>
+</x-swiper>

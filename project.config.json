@@ -40,12 +40,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "测试",
-					"pathName": "pages/test/test",
+					"pathName": "pages/test-slot/test-slot",
 					"query": "",
 					"scene": null
 				},
@@ -53,6 +53,7 @@
 					"id": -1,
 					"name": "视图页",
 					"pathName": "pages/final-index/index",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "x-scroll-view": "../custom-scroll-view/x-scroll-view"
+  }
 }

@@ -1,0 +1,5 @@
+<!--components/test-slot-component/test-slot-component.wxml-->
+
+<scroll-view>
+  <slot></slot>
+</scroll-view>

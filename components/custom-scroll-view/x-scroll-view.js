@@ -56,7 +56,7 @@
     data: {
       pullDownStatus: 0,
       lastScrollEnd: 0,
-      type: 'android'
+      // type: 'android'
     },
 
     /**
@@ -218,11 +218,13 @@
       }
     },
     ready() {
+      console.log('我进 x-scroll-view 了')
       let systemInfo = wx.getSystemInfoSync(),
         regObj = new RegExp("ios", "gi"),
         systemType;
 
       systemType = regObj.test(systemInfo.system) ? "ios" : "android";
+
       if (systemType === 'android') {
         let animation = wx.createAnimation({
           duration: 0,
@@ -236,9 +238,9 @@
         })
         return;
       }
-
       this.setData({
         type: systemType
       })
+      
     }
   })
